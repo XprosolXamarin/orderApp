@@ -11,7 +11,7 @@ namespace orderApp
         {
             InitializeComponent();
 
-            MainPage = new SplashPage();
+            MainPage = new CartPage();
         }
 
         protected override void OnStart()

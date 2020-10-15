@@ -38,17 +38,29 @@ namespace orderApp.View_Models
             Items1.Add(new CarouselModel
             {
                 Details = "Life is what happens while you are busy",
-                ImageUrl = "Image3.png"
-                
+                ImageUrl = "Image3.png",
+                nextImage= "next.png"
 
-        });
+
+            });
 
            
 
         }
 
-        
-       
+        public Command NavigateHomePage
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new HomePage());
+
+                });
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

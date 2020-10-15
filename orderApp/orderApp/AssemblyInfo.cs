@@ -5,3 +5,4 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("Roboto-Regular.ttf", Alias = "ThemeFont")]
 [assembly: ExportFont("Roboto-Medium.ttf", Alias = "ThemeFontMedium")]
 [assembly: ExportFont("Roboto-Bold.ttf", Alias = "ThemeFontBold")]
+[assembly: ExportFont("materialdesignicons-webfont.ttf", Alias = "UserIcon")]

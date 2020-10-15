@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="orderApp.Views.CartPage"
+             xmlns:Helpers="clr-namespace:orderApp.Helpers" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <ViewModels:CartViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" Auto"/>
+               
+                <RowDefinition Height=" *"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" BackgroundColor="#00ADEF" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                  
+
+                </Grid.RowDefinitions>
+               
+                <StackLayout Orientation="Horizontal" 
+                             Grid.Row="0"
+                             Margin="10,20,0,0">
+
+                    <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
+                             Source="Back.png" 
+                                 HeightRequest="35"
+                                 HorizontalOptions="Start"/>
+                    <Label Text="Cart" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="StartAndExpand"
+                           VerticalTextAlignment="Center"/>
+                   
+                    <Label Text="Items(5)" TextColor="White"  
+                       FontFamily="ThemeFontBold" FontSize="Medium"
+                       Margin="0,0,20,0"
+                       Grid.RowSpan="2" HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"/>
+                </StackLayout>
+               
+
+
+
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <CollectionView
+            ItemsSource="{Binding CartItems}"
+            SelectionMode="None"
+            RemainingItemsThreshold="0"
+            RemainingItemsThresholdReachedCommand="{Binding LoadCartItemsCommand}">
+                    <CollectionView.EmptyView>
+                        <Label
+                    Text="Your cart is empty"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout VerticalItemSpacing="30" Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.Footer>
+                        <ActivityIndicator
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Color="#00ADEF"/>
+                    </CollectionView.Footer>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame HasShadow="True" BorderColor="#F2EDED">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                Grid.RowSpan="2"
+                                Source="{Binding Image}"
+                                HeightRequest="130"
+                                WidthRequest="130"
+                                Aspect="AspectFit"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                        <Label Text="{Binding Name}"/>
+                                        <Label Text="{Binding Type, StringFormat='Type: {0}'}"/>
+                                        <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}"/>
+                                        <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                        <Button
+                                    Text="Remove from cart"
+                                    
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="#f58d11"
+                                    TextColor="#fff"
+                                    CornerRadius="0"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Grid Grid.Row="1" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                Grid.Column="0"
+                Text="Check out"
+                TextColor="White"
+                CornerRadius="0"
+                IsVisible="{Binding CartHasItem}"
+                Command="{Binding CheckOutCommand}"
+                BackgroundColor="#00ADEF"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

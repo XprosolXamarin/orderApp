@@ -11,6 +11,7 @@
         
         <CarouselView ItemsSource="{Binding Items1}"
                       IndicatorView="indicatorView"
+                      x:Name="List"
                      >
             <CarouselView.ItemTemplate>
                 <DataTemplate>
@@ -22,11 +23,10 @@
                                        FontFamily="ThemeFontMedium"
                                        TextColor="Black"
                                        MaxLines="5"
-                                      FontSize="Medium"
+                                      FontSize="Small"
                                HorizontalTextAlignment="Center" Margin="10,10,10,0"/>
-
-
-
+                        <StackLayout Orientation="Horizontal">
+                            
                             <Image Source="{Binding ImageUrl}" 
                                    
                                        Aspect="AspectFit"
@@ -34,11 +34,17 @@
                                        WidthRequest="350"
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"
+                                      
                                  
                                       />
 
+                            <ImageButton Source="{Binding nextImage}" HeightRequest="50" WidthRequest="50"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="Center"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding BindingContext.NavigateHomePage, Source={x:Reference List}}" CommandParameter="{Binding}"/>
 
-                        
+                        </StackLayout>
 
                     </StackLayout>
 
