@@ -15,7 +15,7 @@ namespace orderApp.View_Models
             {
                 Image= "Shirt1.jpg",
                 Name="Outfiter",
-                Type="Colthes",
+                Type="XXL",
                 Price="2300.00",
                 Quantity=1
                 
@@ -25,7 +25,7 @@ namespace orderApp.View_Models
             {
                 Image = "Shoes1.png",
                 Name = "Service Shoes",
-                Type = "Shoes",
+                Type = "XL",
                 Price = "2300.00",
                 Quantity = 1
 

@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:Pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="orderApp.Views.CartPage"
              xmlns:Helpers="clr-namespace:orderApp.Helpers" xmlns:ViewModels="clr-namespace:orderApp.View_Models"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#E8E8EA">
     <ContentPage.BindingContext>
         <ViewModels:CartViewModel/>
     </ContentPage.BindingContext>
@@ -56,7 +58,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <CollectionView
+                <CollectionView 
             ItemsSource="{Binding CartItems}"
             SelectionMode="None"
             RemainingItemsThreshold="0"
@@ -85,36 +87,59 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <Image
-                                Grid.RowSpan="2"
-                                Source="{Binding Image}"
-                                HeightRequest="130"
-                                WidthRequest="130"
-                                Aspect="AspectFit"/>
+                                    <Pancake:PancakeView CornerRadius="10">
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Source="{Binding Image}"
+                                            HeightRequest="75"
+                                            WidthRequest="75"
+                                            Aspect="AspectFit"/>
+                                    </Pancake:PancakeView>
                                     <StackLayout Grid.Row="0" Grid.Column="1">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Type, StringFormat='Type: {0}'}"/>
-                                        <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}"/>
-                                        <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="Small" FontFamily="ThemeFontBold"/>
+                                        <Label Text="{Binding Type, StringFormat='Size: {0}'}"/>
+                                       <!-- <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}"/>-->
+                                        <Label Text="{Binding Price, StringFormat='Rs/-{0:C}'}" TextColor="Black" FontSize="Small" FontFamily="ThemeFontBold"/>
                                     </StackLayout>
-                                    <StackLayout
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Orientation="Horizontal"
-                                Spacing="10">
-                                        <Button
+                                    <Frame Grid.Row="0" Grid.Column="2"
+                                                         Padding="5"
+                                         
+                                                         VerticalOptions="Center"
+                                                         BorderColor="Black"
+                                                        
+                                                        
+                                                        
+                                           HasShadow="True"
+                                                         HorizontalOptions="End">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                            <Label Text="{Binding Quantity}"
+                                                   FontSize="Small"
+                                                   VerticalTextAlignment="Center"/>
+                                            <Image Source="Dropdown.png" 
+                                                   Aspect="AspectFit"
+                                                   HeightRequest="35" WidthRequest="35" HorizontalOptions="End"/>
+                                        </StackLayout>
+
+                                    </Frame>
+                                    <!--       <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Orientation="Horizontal"
+                                            Spacing="10">       
+                                         <Button
                                     Text="Remove from cart"
                                     
                                     CommandParameter="{Binding .}"
                                     BackgroundColor="#f58d11"
                                     TextColor="#fff"
                                     CornerRadius="0"/>
-                                    </StackLayout>
+                                    </StackLayout>-->
                                 </Grid>
                             </Frame>
                         </DataTemplate>
