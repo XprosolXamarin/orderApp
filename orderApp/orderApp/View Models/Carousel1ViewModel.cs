@@ -39,8 +39,8 @@ namespace orderApp.View_Models
             {
                 Details = "Life is what happens while you are busy",
                 ImageUrl = "Image3.png",
-                nextImage= "next.png"
-
+                nextImage= "Forward.png",
+                getStart="Get Started"
 
             });
 

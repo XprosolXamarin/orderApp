@@ -10,5 +10,6 @@ namespace orderApp.Models
         public string Details { get; set; }
         public string ImageUrl { get; set; }
         public string nextImage { get; set; }
+        public string getStart { get; set; }
     }
 }

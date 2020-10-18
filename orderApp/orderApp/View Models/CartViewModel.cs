@@ -1,8 +1,10 @@
 ﻿using orderApp.Models;
+using orderApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace orderApp.View_Models
 {
@@ -41,6 +43,47 @@ namespace orderApp.View_Models
 
 
             });
+        }
+        public Command CheckOutCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new CheckoutPage());
+                });
+            }
+        }
+       
+             public Command NavigateAddressPage
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new AddressPage());
+                });
+            }
+        }
+        public Command NavigatePaymentsCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new PaymentsPage());
+                });
+            }
+        }
+        public Command NavigateSummaryPage
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new SummaryPage());
+                });
+            }
         }
     }
 }
