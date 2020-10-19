@@ -11,7 +11,13 @@ namespace orderApp
         {
             InitializeComponent();
 
-            MainPage = new SplashPage();
+            Device.SetFlags(new[]
+            {
+                "SwipeView_Experimental",
+                "IndicatorView_Experimental"
+            });
+
+            MainPage = new DashBoardPage();
         }
 
         protected override void OnStart()

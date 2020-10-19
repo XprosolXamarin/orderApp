@@ -104,7 +104,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="0,0,15,0">
-                            <Frame HeightRequest="50" HasShadow="False" BackgroundColor="#feeee8" CornerRadius="10">
+                            <Frame HeightRequest="50" HasShadow="False" BackgroundColor="LightBlue" CornerRadius="10">
                                 <Image Source="{Binding ImageUrl}"/>
                             </Frame>
                             <Label Text="{Binding categoryName}" HorizontalTextAlignment="Center"

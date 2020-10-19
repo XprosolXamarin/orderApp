@@ -34,8 +34,8 @@
 
                     <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
                              Source="Back.png" 
-                                 HeightRequest="35"
-                                 HorizontalOptions="Start"/>
+                                 HeightRequest="25"
+                                 HorizontalOptions="Start" Command="{Binding NavigateDashboardPage}"/>
                     <Label Text="Cart" TextColor="White"  
                        FontFamily="ThemeFontBold" FontSize="Medium"
                        Margin="0,0,20,0"
@@ -85,11 +85,30 @@
                     </CollectionView.Footer>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame HasShadow="True" BorderColor="#00ADEF" >
-                               
-                                  
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem 
+                               IconImageSource="Star1.png"
+                                                   
+                               BackgroundColor="LightGreen"
+                               />
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                                   IconImageSource="Delete.png"
+                               BackgroundColor="#FF3D00"
+                               />
+                                       
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Frame HasShadow="True" BorderColor="#00ADEF" >
+
+
                                     <Grid >
-                                        
+
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="*"/>
@@ -109,22 +128,22 @@
                                         </Frame>
                                         <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center">
                                             <Label Text="{Binding Name}" TextColor="Black" FontSize="Small" FontFamily="ThemeFontBold"/>
-                                        <!--   <Label Text="{Binding Type, StringFormat='Size: {0}'}"/>
+                                            <!--   <Label Text="{Binding Type, StringFormat='Size: {0}'}"/>
                                             <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}"/>
                                            
                                         <Label Text="{Binding Price, StringFormat='Rs/-{0:C}'}" TextColor="#00ADEF" FontSize="Small" FontFamily="ThemeFontBold"/> -->
-                                        <Frame Padding="10,0,10,0" HorizontalOptions="Start" >
-                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                                <Label Text="-" FontSize="Medium" />
-                                                <Label Text="{Binding Quantity}" FontSize="Medium" />
-                                                <Label Text="+" FontSize="Medium" />
-                                            </StackLayout>
+                                            <Frame Padding="10,0,10,0" HorizontalOptions="Start" >
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                                    <Label Text="-" FontSize="Medium" />
+                                                    <Label Text="{Binding Quantity}" FontSize="Medium" />
+                                                    <Label Text="+" FontSize="Medium" />
+                                                </StackLayout>
 
-                                        </Frame>
-                                    </StackLayout>
-                                    <Label Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Price, StringFormat='Rs/-{0:C}'}" TextColor="#00ADEF" FontSize="Small" FontFamily="ThemeFontBold"/>
+                                            </Frame>
+                                        </StackLayout>
+                                        <Label Grid.RowSpan="2" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Price, StringFormat='Rs/-{0:C}'}" TextColor="#00ADEF" FontSize="Small" FontFamily="ThemeFontBold"/>
 
-                                    <!--       <StackLayout
+                                        <!--       <StackLayout
                                             Grid.Row="1"
                                             Grid.Column="1"
                                             Orientation="Horizontal"
@@ -138,8 +157,9 @@
                                     CornerRadius="0"/>
                                     </StackLayout>-->
                                     </Grid>
-                               
-                            </Frame>
+
+                                </Frame>
+                            </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

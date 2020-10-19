@@ -85,5 +85,45 @@ namespace orderApp.View_Models
                 });
             }
         }
+        public Command NavigateDashboardPage
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new DashBoardPage());
+                });
+            }
+        }
+        public Command NavigateCartPage
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new CartPage());
+                });
+            }
+        }
+        public Command NavigateOrderAcceptedCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new OrderAcceptedPage());
+                });
+            }
+        }
+        public Command NavigateOrderTrackPage
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage = new NavigationPage(new OrderTrackPage());
+                });
+            }
+        }
     }
 }

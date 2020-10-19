@@ -33,23 +33,21 @@
                                    Aspect="AspectFit"
                                   />
                             </Frame>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,-30">
-                                <Label  Text="{Binding  getStart}" TextColor="White" FontFamily="ThemeFontBold" FontSize="Small" VerticalTextAlignment="Center"
+                           
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Label  Text="{Binding  getStart}" TextColor="White" FontFamily="ThemeFontBold" FontSize="Small" VerticalTextAlignment="Center"
                                             BackgroundColor="Transparent">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding BindingContext.NavigateHomePage, Source={x:Reference List}}" CommandParameter="{Binding}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
-                                <Image Source="{Binding nextImage}" HeightRequest="30" WidthRequest="30" Aspect="AspectFit">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding BindingContext.NavigateHomePage, Source={x:Reference List}}" CommandParameter="{Binding}"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                               
+                                        
+                                    </Label>
+                                <ImageButton BackgroundColor="Transparent" Source="{Binding nextImage}" HeightRequest="30" WidthRequest="30" Aspect="AspectFit"
+                                              Command="{Binding Path=BindingContext.NavigateHomePage, Source={x:Reference List}}"/>
+
+
                             </StackLayout>
                            
-                              
-                         <!--  Command="{Binding BindingContext.NavigateHomePage, Source={x:Reference List}}" CommandParameter="{Binding}"-->
+
+
+                            <!--  Command="{Binding BindingContext.NavigateHomePage, Source={x:Reference List}}" CommandParameter="{Binding}"-->
 
                         </StackLayout>
 
@@ -62,6 +60,7 @@
            
             <IndicatorView x:Name="indicatorView"
                            Grid.Row="0"
+                         
                        IndicatorsShape="Circle"
                        IndicatorColor="#FFE4E1"
                        SelectedIndicatorColor="White"
