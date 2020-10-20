@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace orderApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderTrackPage : ContentPage
+    public partial class RegisterPage : ContentPage
     {
-        public OrderTrackPage()
+        public RegisterPage()
         {
             InitializeComponent();
         }

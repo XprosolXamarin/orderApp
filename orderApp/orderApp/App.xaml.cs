@@ -17,7 +17,7 @@ namespace orderApp
                 "IndicatorView_Experimental"
             });
 
-            MainPage = new DashBoardPage();
+            MainPage = new SplashPage();
         }
 
         protected override void OnStart()

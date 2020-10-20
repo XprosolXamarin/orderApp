@@ -3,8 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="orderApp.Views.DashBoardPage"
              xmlns:Helpers="clr-namespace:orderApp.Helpers"
-             NavigationPage.HasNavigationBar="False"
+            Shell.BackgroundColor="#00ADEF"
+             NavigationPage.IconColor="White"
+             
+             Title="SuperStore"
+             IconImageSource="Scan.png"
              xmlns:Pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ViewModels="clr-namespace:orderApp.View_Models">
+    <ContentPage.ToolbarItems>
+      
+        <ToolbarItem IconImageSource="{
+                                        FontImage FontFamily=UserIcon,
+                                        Glyph={x:Static  Helpers:IconFonts.Cart},
+                                        Size=30, Color=White}" Command="{Binding ViewCartCommand}" />
+        <ToolbarItem IconImageSource="{
+                                        FontImage FontFamily=UserIcon,
+                                        Glyph={x:Static  Helpers:IconFonts.ViewList},
+                                        Size=30, Color=White}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <ViewModels:DashboardViewModel/>
     </ContentPage.BindingContext>
@@ -22,64 +37,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" BackgroundColor="#00ADEF" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-
-                </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Horizontal" 
-                             Grid.Row="0" Grid.Column="0"
-                             Margin="10,20,0,0">
-
-                    <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
-                             Source="{
-                                        FontImage FontFamily=UserIcon,
-                                        Glyph={x:Static  Helpers:IconFonts.Menu},
-                                        Size=35, Color=White}"
-                             HorizontalOptions="Start"/>
-
-                    <Label  
-                    TextColor="White"
-                   HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Super" CharacterSpacing="2" FontFamily="ThemeFontBold" FontSize="Medium"/>
-                                    <Span Text="Store" CharacterSpacing="2" FontFamily="ThemeFontMedium" FontSize="Medium"/>
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </StackLayout>
-                <ImageButton BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
-                             Source="{
-                                        FontImage FontFamily=UserIcon,
-                                        Glyph={x:Static  Helpers:IconFonts.ViewList},
-                                        Size=35, Color=White}"
-                             Margin="0,20,10,0" HorizontalOptions="End"/>
-                <Label Text="5" FontSize="Subtitle"
-                       TextColor="White"
-                       Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
-                       HorizontalTextAlignment="End" VerticalTextAlignment="Start"
-                       Margin="0,20,10,0"/>
-
-                <ImageButton BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
-                             Source="{
-                                        FontImage FontFamily=UserIcon,
-                                        Glyph={x:Static  Helpers:IconFonts.Cart},
-                                        Size=35, Color=White}"
-                             Margin="0,20,20,0" HorizontalOptions="End"
-                             Command="{Binding ViewCartCommand}"/>
-
-            </Grid>
+           
             <Pancake:PancakeView Grid.Row="1" Grid.Column="0"  >
                 
 

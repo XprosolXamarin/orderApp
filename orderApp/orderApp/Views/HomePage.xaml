@@ -14,7 +14,7 @@
                    TextColor="White"
                    FontSize="Large"
                    Margin="40"/>
-            <Frame BackgroundColor="White" HorizontalOptions="Fill"
+            <Frame BackgroundColor="White" HorizontalOptions="Fill" Padding="3"
                    Margin="20,0,20,20"
                    HeightRequest="50">
                 <StackLayout Orientation="Horizontal">
@@ -33,7 +33,7 @@
                     <TapGestureRecognizer Command="{Binding NavigateToHomePage}"/>
                 </Frame.GestureRecognizers>
             </Frame>
-            <Frame BackgroundColor="White" HorizontalOptions="Fill"
+            <Frame BackgroundColor="White" HorizontalOptions="Fill" Padding="3"
                     Margin="20,0,20,20"
                    HeightRequest="50">
                 <StackLayout Orientation="Horizontal">
@@ -52,7 +52,7 @@
                     <TapGestureRecognizer Command="{Binding NavigateToScanPage}"/>
                 </Frame.GestureRecognizers>
             </Frame>
-            <Frame BackgroundColor="White" HorizontalOptions="Fill"
+            <Frame BackgroundColor="White" HorizontalOptions="Fill" Padding="3"
                    Margin="20,0,20,20"
                    HeightRequest="50">
                 <StackLayout Orientation="Horizontal">
@@ -71,7 +71,7 @@
                     <TapGestureRecognizer Command="{Binding NavigateToSearchPage}"/>
                 </Frame.GestureRecognizers>
             </Frame>
-            <Frame BackgroundColor="White" HorizontalOptions="Fill"
+            <Frame BackgroundColor="White" HorizontalOptions="Fill" Padding="3"
                    Margin="20,0,20,20"
                    HeightRequest="50">
                 <StackLayout Orientation="Horizontal">

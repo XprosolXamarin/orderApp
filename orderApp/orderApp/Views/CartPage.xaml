@@ -33,10 +33,13 @@
                              Margin="10,20,0,0">
 
                     <ImageButton BackgroundColor="Transparent"  Grid.RowSpan="2"
-                             Source="Back.png" 
+                             Source="{
+                                                    FontImage FontFamily=UserIcon,
+                                                    Glyph={x:Static  Helpers:IconFonts.ArrowLeft},
+                                                    Size=70, Color=White}" 
                                  HeightRequest="25"
                                  HorizontalOptions="Start" Command="{Binding NavigateDashboardPage}"/>
-                    <Label Text="Cart" TextColor="White"  
+                    <Label Text="Your Cart" TextColor="White"  
                        FontFamily="ThemeFontBold" FontSize="Medium"
                        Margin="0,0,20,0"
                        Grid.RowSpan="2" HorizontalOptions="StartAndExpand"
@@ -64,7 +67,8 @@
                     ItemsSource="{Binding CartItems}"
                     SelectionMode="None"
                     RemainingItemsThreshold="0"
-                    RemainingItemsThresholdReachedCommand="{Binding LoadCartItemsCommand}">
+                    RemainingItemsThresholdReachedCommand="{Binding LoadCartItemsCommand}" x:Name="List">
+                    
                     <CollectionView.EmptyView>
                         <Label
                     Text="Your cart is empty"
@@ -100,6 +104,7 @@
                                         <SwipeItem
                                                    IconImageSource="Delete.png"
                                BackgroundColor="#FF3D00"
+                                            Command="{Binding Path=BindingContext.RemoveItem, Source={x:Reference List}}" CommandParameter="{Binding}" 
                                />
                                        
                                     </SwipeItems>
@@ -134,9 +139,17 @@
                                         <Label Text="{Binding Price, StringFormat='Rs/-{0:C}'}" TextColor="#00ADEF" FontSize="Small" FontFamily="ThemeFontBold"/> -->
                                             <Frame Padding="10,0,10,0" HorizontalOptions="Start" >
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                                    <Label Text="-" FontSize="Medium" />
-                                                    <Label Text="{Binding Quantity}" FontSize="Medium" />
-                                                    <Label Text="+" FontSize="Medium" />
+                                                    <Label Text="-" FontSize="Medium">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.DecreaseQtyCommand, Source={x:Reference List}}" CommandParameter="{Binding}"/>
+                                                        </Label.GestureRecognizers>   
+                                                    </Label>
+                                                    <Label Text="{Binding purchasedQty}" FontSize="Medium" />
+                                                    <Label Text="+" FontSize="Medium" >
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.IncreaseQtyCommand, Source={x:Reference List}}" CommandParameter="{Binding}"/>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
                                                 </StackLayout>
 
                                             </Frame>

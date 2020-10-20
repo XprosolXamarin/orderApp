@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace orderApp.View_Models
 {
-    class CartViewModel
+    class CartViewModel:BaseViewModel
     {
         public ObservableCollection<CartModel> CartItems { get; set; } = new ObservableCollection<CartModel>();
         public CartViewModel()
@@ -19,7 +19,7 @@ namespace orderApp.View_Models
                 Name="Outfiter",
                 Type="XXL",
                 Price="2300.00",
-                Quantity=1
+                purchasedQty = 1
                 
 
             });
@@ -29,7 +29,7 @@ namespace orderApp.View_Models
                 Name = "Service Shoes",
                 Type = "XL",
                 Price = "2300.00",
-                Quantity = 1
+                purchasedQty = 1
 
 
             });
@@ -39,10 +39,43 @@ namespace orderApp.View_Models
                 Name = "Tecno",
                 Type = "Device",
                 Price = "2300.00",
-                Quantity = 1
+                purchasedQty = 1
 
 
             });
+        }
+        public Command<CartModel> RemoveItem
+        {
+            get
+            {
+                return new Command<CartModel>((CartModel product) =>
+                {
+                    CartItems.Remove(product);
+                });
+            }
+        }
+        public Command<CartModel> IncreaseQtyCommand
+        {
+            get
+            {
+                return new Command<CartModel>((CartModel product) =>
+                {
+                    product.purchasedQty += 1;
+                    //product.totalpurchased = product.totalpurchased * product.purchasedQty;
+                });
+            }
+        }
+        public Command<CartModel> DecreaseQtyCommand
+        {
+            get
+            {
+                return new Command<CartModel>((CartModel product) =>
+                {
+                   // product.totalpurchased = product.totalpurchased / product.purchasedQty;
+                    product.purchasedQty -= 1;
+
+                });
+            }
         }
         public Command CheckOutCommand
         {
@@ -50,7 +83,7 @@ namespace orderApp.View_Models
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage = new NavigationPage(new CheckoutPage());
+                    Application.Current.MainPage.Navigation.PushModalAsync(new CheckoutPage());
                 });
             }
         }
@@ -61,8 +94,9 @@ namespace orderApp.View_Models
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage = new NavigationPage(new AddressPage());
+                    Application.Current.MainPage.Navigation.PushModalAsync(new AddressPage());
                 });
+                   
             }
         }
         public Command NavigatePaymentsCommand
@@ -71,7 +105,8 @@ namespace orderApp.View_Models
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage = new NavigationPage(new PaymentsPage());
+                    Application.Current.MainPage.Navigation.PushModalAsync(new PaymentsPage());
+                   
                 });
             }
         }
@@ -81,7 +116,8 @@ namespace orderApp.View_Models
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage = new NavigationPage(new SummaryPage());
+                    Application.Current.MainPage.Navigation.PushModalAsync(new SummaryPage());
+                   
                 });
             }
         }
@@ -91,7 +127,8 @@ namespace orderApp.View_Models
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage = new NavigationPage(new DashBoardPage());
+                    Application.Current.MainPage.Navigation.PushModalAsync(new AppShellPage());
+                    
                 });
             }
         }
@@ -101,7 +138,8 @@ namespace orderApp.View_Models
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage = new NavigationPage(new CartPage());
+                    Application.Current.MainPage.Navigation.PushModalAsync(new CartPage());
+                   
                 });
             }
         }
@@ -111,7 +149,8 @@ namespace orderApp.View_Models
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage = new NavigationPage(new OrderAcceptedPage());
+                    Application.Current.MainPage.Navigation.PushModalAsync(new OrderAcceptedPage());
+                  
                 });
             }
         }
@@ -121,7 +160,8 @@ namespace orderApp.View_Models
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage = new NavigationPage(new OrderTrackPage());
+                    Application.Current.MainPage.Navigation.PushModalAsync(new LoginPage());
+                   
                 });
             }
         }
